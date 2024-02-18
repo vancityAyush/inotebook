@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "inotebook",
+			"path": "inotebook"
+		},
+		{
+			"name": "inotebook-backend",
+			"path": "inotebook-backend"
+		}
+	],
+	"settings": {}
+}

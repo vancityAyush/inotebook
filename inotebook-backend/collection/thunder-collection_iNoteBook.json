@@ -1,0 +1,237 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "iNoteBook",
+    "dateExported": "2024-02-18T19:46:34.040Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "90cbcb0f-ab73-4b31-a2b6-5476fb75de22",
+            "colId": "737d707a-dde3-4f62-a412-a37a22e95865",
+            "containerId": "",
+            "name": "createuser",
+            "url": "/auth/createuser",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-18T18:16:56.498Z",
+            "modified": "2024-02-18T18:28:59.697Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\" : \"Aysadsash Kumar\",\n  \"email\" : \"eliasakssdsadsadaelesven@gmail.com\",\n  \"password\" : \"HelloThere\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.authtoken",
+                    "action": "setto",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "a3a24b10-37fb-44cf-a983-1c305a3108f6",
+            "colId": "737d707a-dde3-4f62-a412-a37a22e95865",
+            "containerId": "",
+            "name": "login",
+            "url": "/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-18T18:18:36.330Z",
+            "modified": "2024-02-18T18:28:10.483Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"eliasakeleven@gmail.com\",\n  \"password\" : \"HelloThere\"\n}",
+                "form": []
+            },
+            "tests": [],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "var json = tc.response.json;",
+                            "tc.setVar(\"token\",json.authtoken);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "c9d2efe5-4978-4040-b579-b1a631c843f6",
+            "colId": "737d707a-dde3-4f62-a412-a37a22e95865",
+            "containerId": "",
+            "name": "getuser",
+            "url": "/auth/getuser",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-18T18:24:05.209Z",
+            "modified": "2024-02-18T18:24:48.368Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": [],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "var json = tc.response.json;",
+                            "tc.setVar(\"token\",json.authtoken);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "2445ad0a-5773-43ed-ac50-85eb8ed94e29",
+            "colId": "737d707a-dde3-4f62-a412-a37a22e95865",
+            "containerId": "",
+            "name": "fetchallnotes",
+            "url": "/notes/fetchallnotes",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-18T18:29:08.903Z",
+            "modified": "2024-02-18T18:29:44.409Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": [],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "var json = tc.response.json;",
+                            "tc.setVar(\"token\",json.authtoken);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "2581e5e7-d320-46ec-8dd3-db6d8ec1675e",
+            "colId": "737d707a-dde3-4f62-a412-a37a22e95865",
+            "containerId": "",
+            "name": "addNote",
+            "url": "/notes//addnote",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-02-18T18:30:01.048Z",
+            "modified": "2024-02-18T18:31:49.696Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\" : \"My Title\",\n  \"description\" : \"My Description\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json._id",
+                    "action": "setto",
+                    "value": "{{noteId}}"
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "var json = tc.response.json;",
+                            "tc.setVar(\"token\",json.authtoken);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "3d996dea-3a26-41d3-928c-556fd3430aac",
+            "colId": "737d707a-dde3-4f62-a412-a37a22e95865",
+            "containerId": "",
+            "name": "updateNote",
+            "url": "/notes/updatenote/{{noteId}}",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-02-18T18:31:03.575Z",
+            "modified": "2024-02-18T18:32:16.899Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\" : \"My Title2\",\n  \"description\" : \"My Description\"\n}",
+                "form": []
+            },
+            "tests": [],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "var json = tc.response.json;",
+                            "tc.setVar(\"token\",json.authtoken);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "1748cf3f-00fb-49c9-a946-4e7acda45ee6",
+            "colId": "737d707a-dde3-4f62-a412-a37a22e95865",
+            "containerId": "",
+            "name": "deleteNote",
+            "url": "/notes/deletenote/{{noteId}}",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-02-18T18:32:33.831Z",
+            "modified": "2024-02-18T18:33:05.454Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\" : \"My Title2\",\n  \"description\" : \"My Description\"\n}",
+                "form": []
+            },
+            "tests": [],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "var json = tc.response.json;",
+                            "tc.setVar(\"token\",json.authtoken);"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:5000/api"
+        },
+        "envId": "515b981c-7efe-4923-88b8-8df99dbb54bd"
+    }
+}
