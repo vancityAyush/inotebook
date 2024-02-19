@@ -1,11 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import noteContext from "../context/notes/noteContext";
+import AddNote from "./AddNote";
 const About = () => {
-  const a = useContext(noteContext);
-  useEffect(() => {
-    a.update();
-  }, []);
-  return <div>This is About {a.state.name}</div>;
+  return (
+    <div>
+      This is About
+      <AddNote />
+    </div>
+  );
 };
 
 export default About;
