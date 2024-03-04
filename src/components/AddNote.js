@@ -52,6 +52,18 @@ const AddNote = () => {
             onChange={onChange}
           />
         </div>
+        <div className="mb-3">
+          <label for="tag" className="form-label text-start">
+            Tag
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="tag"
+            id="tag"
+            onChange={onChange}
+          />
+        </div>
         <div className="mb-3 form-check">
           <input
             type="checkbox"
