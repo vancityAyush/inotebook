@@ -5,20 +5,21 @@ const AddNote = () => {
   const [note, setNote] = useState({
     title: "",
     description: "",
-    tag: "default",
+    tag: "",
   });
   const context = useContext(noteContext);
   const { addNote } = context;
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+
+    setNote({ title: "", description: "", tag: "" });
   };
   const onChange = (e) => {
     setNote({
       ...note,
       [e.target.name]: e.target.value,
     });
-    console.log(note);
   };
   return (
     <div className="container">
@@ -35,6 +36,9 @@ const AddNote = () => {
             aria-describedby="titleHelp"
             name="title"
             onChange={onChange}
+            value={note.title}
+            minLength={5}
+            required
           />
           <div id="titleHelp" className="form-text">
             Add your title here
@@ -49,7 +53,10 @@ const AddNote = () => {
             className="form-control"
             name="description"
             id="description"
+            value={note.description}
             onChange={onChange}
+            minLength={5}
+            required
           />
         </div>
         <div className="mb-3">
@@ -60,6 +67,7 @@ const AddNote = () => {
             type="text"
             className="form-control"
             name="tag"
+            value={note.tag}
             id="tag"
             onChange={onChange}
           />
@@ -74,7 +82,12 @@ const AddNote = () => {
             Check me out
           </label>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleClick}>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleClick}
+          disabled={note.title < 5 || note.description < 5}
+        >
           Submit
         </button>
       </form>
