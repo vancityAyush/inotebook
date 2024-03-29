@@ -15,6 +15,6 @@ jobs:
       run: cat body.md
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "release.tar.gz,foo/*.txt"
-        bodyFile: "body.md
         tag : ${{ github.sha }}
+        artifacts: "release.tar.gz,foo/*.txt"
+        bodyFile: "body.md"
